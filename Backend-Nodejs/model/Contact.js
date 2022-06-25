@@ -32,6 +32,12 @@ const contactSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+
+    user: {
+        type: String,
+        required: true
+
+    },
     location: locationSchema
 
 });
