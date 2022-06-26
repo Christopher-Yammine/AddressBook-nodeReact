@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 const { default: axios } = require("axios");
 const Contacts = () => {
     const [showContacts, setContact] = useState([]);
+    const [showAdd, setAdd] = useState(false);
     function getContacts() {
         let data = { userId: localStorage.getItem("userId") }
         console.log(localStorage.getItem("userId"));
@@ -13,7 +14,8 @@ const Contacts = () => {
         }).then(function (response) {
             console.log(response);
             setContact(response.data);
-            console.log(showContacts);
+
+
 
         })
     }
@@ -21,17 +23,20 @@ const Contacts = () => {
     return (
         <div className='contactsContainer'>
             <div>
-            <button type='button' className='btn btn-block' onClick={(e) => {
-
-            }}>Add contact</button>
-        </div>
+                <button type='button' className='btn btn-block' onClick={(e) => {
+                    setAdd(!showAdd);
+                    console.log(showAdd);
+                    console.log(showContacts.map((contact) => { return contact._id }));
+                }}>Add contact</button>
+            </div>
             {showContacts.map((contact) => {
                 return (
-                    <div className='contactDiv'>
+                    <div className='contactDiv' key={contact._id}>
                         <div className='contactName'>
+
                             {contact.firstName} {contact.lastName}
                         </div>
-                        <div className='phoneNumber'>{contact.phoneNumber}</div>
+                        <div className='phoneNumber' >{contact.phoneNumber}</div>
                     </div>)
             })}</div>
     )
