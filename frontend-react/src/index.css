@@ -110,3 +110,10 @@ footer {
   margin-top: 30px;
   text-align: center;
 }
+
+.contactDiv {
+  border-radius: 20px;
+  border: solid;
+  margin: 20px;
+  padding: 20px;
+}

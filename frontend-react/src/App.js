@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login';
-import Contact from './components/Contact';
+import Contacts from './components/Contacts';
 import { useState, useEffect } from 'react';
 
 const { default: axios } = require("axios");
@@ -38,7 +38,7 @@ function App() {
   return (
     <div className='container'>
       {showLogin && <Login onPressed={checkcreds} />}
-      {showContact && <Contact />}
+      {showContact && <Contacts />}
     </div>
   );
 }
