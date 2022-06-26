@@ -39,6 +39,7 @@ async function register(req, res) {
 }
 async function login(req, res) {
     try {
+        console.log(req.body);
         const user = await getByEmail(req.body.email);
         if (!user) return res.status(400).send('invalid credentials');
 
@@ -49,8 +50,7 @@ async function login(req, res) {
             { _id: user._id, name: user.name, email: user.email },
             TOKEN_SECRET
         );
-        console.log(token);
-        return res.header('auth-token', token).send(token);
+        return res.header('auth-token', token).send({ token: token, user: user });
 
     } catch (error) {
         console.log(error);
