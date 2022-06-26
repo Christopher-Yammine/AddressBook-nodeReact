@@ -2,10 +2,8 @@ const { getByUserId, addContact } = require('./service');
 
 async function addnewContact(req, res) {
     try {
-        console.log(req.body);
 
         const newContact = await addContact(req.body);
-        console.log('newContact =>', newContact);
         return res.status(200).send(newContact);
     } catch (error) {
         console.log(error);

@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from './components/Login';
 import Contacts from './components/Contacts';
 import AddContact from './components/AddContact';
+import Register from './components/Register';
 
 const { default: axios } = require("axios");
 function App() {
@@ -37,7 +37,7 @@ function App() {
         <Route path="/" element={<div className='container'><Login onPressed={checkcreds} /></div>}></Route>
         <Route path="/contact" element={<div className='container'><Contacts /></div>}></Route>
         <Route path="/addcontact" element={<div className='container'><AddContact /></div>}></Route>
-
+        <Route path="/register" element={<div className='container'><Register /></div>}></Route>
       </Routes>
     </BrowserRouter >
 

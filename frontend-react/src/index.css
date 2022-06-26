@@ -117,3 +117,36 @@ footer {
   margin: 20px;
   padding: 20px;
 }
+
+.btn-add {
+  font-size: 24pt;
+
+}
+
+.contactName {
+  display: flex;
+  justify-content: space-between;
+}
+
+.status {
+  color: rgb(190, 190, 190)
+}
+
+.email {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+}
+
+.logOut{
+  display: inline-block;
+  background: rgb(117, 117, 117);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}

@@ -8,6 +8,7 @@ async function getByUserId(userId) {
 }
 
 async function addContact(body) {
+    console.log(body);
     const {
         firstName,
         lastName,
