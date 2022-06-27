@@ -12,6 +12,7 @@ const Contacts = () => {
         setfilter(e);
     }
     function filterArr(e) {
+        
         console.log(filterAtt)
         console.log(e);
         if (e === "") {

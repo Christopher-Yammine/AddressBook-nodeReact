@@ -1,8 +1,12 @@
 import axios from 'axios';
-import React from 'react'
+import React from 'react';
+import { Map, Draggable } from "pigeon-maps";
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'
 const AddContact = () => {
+    const [anchor, setAnchor] = useState([33.8938, 35.5018]);
+    const [center, setCenter] = useState([33.8938, 35.5018])
+    const [zoom, setZoom] = useState(11)
     const navigate = useNavigate();
     const [firstName, setfirstname] = useState("");
     const [LastName, setlastname] = useState("")
@@ -10,6 +14,10 @@ const AddContact = () => {
     const [status, setstatus] = useState("")
     const [email, setemail] = useState("")
     function addCont() {
+        let location = {
+            longitude: anchor[0],
+            latitude: anchor[1]
+        }
         let data = {
             firstName: firstName,
             lastName: LastName,
@@ -17,7 +25,7 @@ const AddContact = () => {
             status: status,
             email: email,
             user: localStorage.getItem("userId"),
-            location: { longitude: "1231412", latitude: "12312312" }
+            location: location
         }
         axios({
             method: 'post',
@@ -33,6 +41,7 @@ const AddContact = () => {
     return (
 
         <div>
+
             <div>
                 <button className='btn' onClick={(e) => {
                     navigate('/contact');
@@ -97,6 +106,21 @@ const AddContact = () => {
                         }
 
                         }></input>
+                    <div className='map'>
+                        <label>Choose a location(scroll up/down to zoom in/out)</label>
+                        <Map height={300} center={center}
+                            zoom={zoom}
+                            onBoundsChanged={({ center, zoom }) => {
+                                setCenter(center)
+                                setZoom(zoom)
+                            }} >
+                            <Draggable offset={[60, 87]} anchor={anchor} onDragEnd={setAnchor}>
+                                <img src={require("../assets/pointer.png")} width={100} height={80} alt="pointer" />
+                            </Draggable>
+                        </Map>
+                    </div>
+
+
                 </div>
                 <button className='btn btn-block btn-add' type='button' onClick={addCont}>+</button>
             </form>
