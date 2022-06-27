@@ -6,14 +6,29 @@ const Contacts = () => {
 
     const navigate = useNavigate();
     const [showContacts, setContact] = useState([]);
-    let initArr = [];
+    const [filterAtt, setfilter] = useState("firstName");
+
+    function changeFilter(e) {
+        setfilter(e);
+    }
     function filterArr(e) {
+        console.log(filterAtt)
         console.log(e);
-        if (e == "") {
+        if (e === "") {
             getContacts();
-        } else {
+        } else if (filterAtt === "firstName") {
             setContact(showContacts.filter(contact => contact.firstName.includes(e)))
+        } else if (filterAtt === "lastName") {
+            setContact(showContacts.filter(contact => contact.lastName.includes(e)))
+        } else if (filterAtt === "status") {
+            setContact(showContacts.filter(contact => contact.status.includes(e)))
+        } else if (filterAtt === "phoneNumber") {
+            setContact(showContacts.filter(contact => contact.phoneNumber.includes(e)))
+        } else if (filterAtt === "email") {
+            setContact(showContacts.filter(contact => contact.email.includes(e)))
         }
+
+
 
     }
     function logout() {
@@ -28,7 +43,6 @@ const Contacts = () => {
             url: 'http://127.0.0.1:3000/api/contact/getByid',
             data: data
         }).then(function (response) {
-            initArr = response.data;
             setContact(response.data);
 
 
@@ -55,6 +69,16 @@ const Contacts = () => {
                         filterArr(e.currentTarget.value)
                     }}
                 ></input>
+                <div>
+
+                </div>
+                <select name='filter' id='filter' className='filters' onChange={(e) => { changeFilter(e.currentTarget.value) }}>
+                    <option className='options' value="firstName"> First Name</option>
+                    <option value='lastName'>Last Name</option>
+                    <option value='status'>Status</option>
+                    <option value='phoneNumber'>Phone Number</option>
+                    <option value='email'>Email</option>
+                </select>
             </div>
             {showContacts.map((contact) => {
                 return (

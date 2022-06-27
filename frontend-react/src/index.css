@@ -137,7 +137,7 @@ footer {
   font-weight: bold;
 }
 
-.logOut{
+.logOut {
   display: inline-block;
   background: rgb(117, 117, 117);
   color: #fff;
@@ -149,4 +149,19 @@ footer {
   text-decoration: none;
   font-size: 15px;
   font-family: inherit;
+}
+
+
+.filters {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  color: darkblue;
+  font-family: 'Orbitron';
+  background-color: darkgray;
+}
+
+.options {
+  margin: 10px
 }
